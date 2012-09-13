@@ -24,6 +24,12 @@ nate = Contact.create({ name: 'Nate',
 chris = Contact.create({ name: 'Chris',
                         phone_number: '555-1212'})
 
+mike = Contact.create({ name: 'Mike',
+                        phone_number: '555-1213'})
+
+steve = Contact.create({ name: 'Steve',
+                        phone_number: '555-1513'})
+
 building.owner = ContactAssociation.create({ contact_id: nate.id,
                                              associatable_id: building.id,
                                              associatable_type: 'building'})
@@ -31,6 +37,15 @@ building.owner = ContactAssociation.create({ contact_id: nate.id,
 building.manager = ContactAssociation.create({ contact_id: jack.id,
                                                associatable_type: building.id,
                                                associatable_type: 'building'})
+
+building.agents <<  ContactAssociation.create({ contact_id: mike.id,
+                                               associatable_type: building.id,
+                                               associatable_type: 'building'})
+
+building.agents <<  ContactAssociation.create({ contact_id: steve.id,
+                                               associatable_type: building.id,
+                                               associatable_type: 'building'})
+
 building.save
 
 company_a = Company.create({ name: 'Company A'})
