@@ -30,21 +30,25 @@ mike = Contact.create({ name: 'Mike',
 steve = Contact.create({ name: 'Steve',
                         phone_number: '555-1513'})
 
-building.owner = ContactAssociation.create({ contact_id: nate.id,
-                                             associatable_id: building.id,
-                                             associatable_type: 'building'})
+building.owner = ContactAssociation.create({  contact_id: nate.id,
+                                              contact_type: "Owner",
+                                              associatable_id: building.id,
+                                              associatable_type: 'building'})
 
-building.manager = ContactAssociation.create({ contact_id: jack.id,
-                                               associatable_type: building.id,
-                                               associatable_type: 'building'})
+building.manager = ContactAssociation.create({  contact_id: jack.id,
+                                                contact_type: "Manager",
+                                                associatable_type: building.id,
+                                                associatable_type: 'building'})
 
 building.agents <<  ContactAssociation.create({ contact_id: mike.id,
-                                               associatable_type: building.id,
-                                               associatable_type: 'building'})
+                                                contact_type: "Agent",
+                                                associatable_type: building.id,
+                                                associatable_type: 'building'})
 
 building.agents <<  ContactAssociation.create({ contact_id: steve.id,
-                                               associatable_type: building.id,
-                                               associatable_type: 'building'})
+                                                contact_type: "Agent",
+                                                associatable_type: building.id,
+                                                associatable_type: 'building'})
 
 building.save
 
